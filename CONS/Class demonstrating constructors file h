@@ -1,0 +1,37 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class FileDemo {
+public:
+    FileDemo() {
+        cout << "Constructor called" << endl;
+
+        ofstream fout("demo.txt");
+        fout << "Hello from file handling";
+        fout.close();
+
+        cout << "Data written to file" << endl;
+    }
+
+    void display() {
+        string text;
+        ifstream fin("demo.txt");
+
+        getline(fin, text);
+        cout << "File data: " << text << endl;
+
+        fin.close();
+    }
+
+    ~FileDemo() {
+        cout << "Destructor called" << endl;
+    }
+};
+
+int main() {
+    FileDemo f;
+    f.display();
+
+    return 0;
+}
