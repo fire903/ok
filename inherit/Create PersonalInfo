@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+class PersonalInfo {
+public:
+    string name;
+    int id;
+
+    virtual void display() {
+        cout << "Name: " << name << endl;
+        cout << "Employee ID: " << id << endl;
+    }
+};
+
+class Jobinfo : public PersonalInfo {
+public:
+    string designation;
+};
+
+class Payroll : public Jobinfo {
+public:
+    int salary;
+
+    void calculateSalary() {
+        if (designation == "Manager") {
+            salary = 50000;
+        }
+        else if (designation == "Developer") {
+            salary = 35000;
+        }
+        else {
+            salary = 20000;
+        }
+
+        cout << "Designation: " << designation << endl;
+        cout << "Monthly Salary: " << salary << endl;
+    }
+
+    void display() override {
+        PersonalInfo::display();
+        calculateSalary();
+    }
+};
+
+int main() {
+    Payroll p;
+
+    cout << "Enter name: ";
+    cin >> p.name;
+
+    cout << "Enter employee ID: ";
+    cin >> p.id;
+
+    cout << "Enter designation (Manager/Developer/Other): ";
+    cin >> p.designation;
+
+    PersonalInfo *ptr = &p;
+    ptr->display();
+
+    return 0;
+}
