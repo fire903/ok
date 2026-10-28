@@ -1,0 +1,38 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Student {
+    int roll;
+    string name;
+    float marks;
+
+public:
+    Student() {
+        cout << "Enter roll number, name and marks: ";
+        cin >> roll >> name >> marks;
+
+        ofstream fout("student.txt");
+        fout << roll << " " << name << " " << marks;
+        fout.close();
+    }
+
+    void display() {
+        ifstream fin("student.txt");
+
+        fin >> roll >> name >> marks;
+
+        cout << "\nRoll Number: " << roll;
+        cout << "\nName: " << name;
+        cout << "\nMarks: " << marks;
+
+        fin.close();
+    }
+};
+
+int main() {
+    Student s;
+    s.display();
+
+    return 0;
+}
