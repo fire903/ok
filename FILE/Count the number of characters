@@ -1,0 +1,22 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream fout("data.txt");
+    fout << "Hello World";
+    fout.close();
+
+    ifstream fin("data.txt");
+    char ch;
+    int count = 0;
+
+    while (fin.get(ch)) {
+        count++;
+    }
+
+    cout << "Number of characters: " << count;
+
+    fin.close();
+    return 0;
+}
