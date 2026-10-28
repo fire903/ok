@@ -1,0 +1,27 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class File {
+    ofstream fout;
+
+public:
+    File() {
+        cout << "Constructor called" << endl;
+        fout.open("data.txt");
+        fout << "Hello World";
+    }
+
+    ~File() {
+        fout.close();
+        cout << "Destructor called" << endl;
+    }
+};
+
+int main() {
+    File f;
+
+    cout << "Writing to file" << endl;
+
+    return 0;
+}
