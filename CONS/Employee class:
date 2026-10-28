@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+    string Emp_name, department, post;
+    int Emp_id;
+
+public:
+    Employee() {
+        Emp_name = "Unknown";
+        Emp_id = 0;
+        department = "None";
+        post = "None";
+    }
+
+    Employee(string n, int id, string d, string p) {
+        Emp_name = n;
+        Emp_id = id;
+        department = d;
+        post = p;
+    }
+
+    void display() {
+        cout << "Name: " << Emp_name << endl;
+        cout << "ID: " << Emp_id << endl;
+        cout << "Department: " << department << endl;
+        cout << "Post: " << post << endl;
+    }
+
+    ~Employee() {
+        cout << "Employee object destroyed" << endl;
+    }
+};
+
+int main() {
+    Employee e1;
+    Employee e2("Amit", 101, "IT", "Manager");
+
+    cout << "Default Employee:" << endl;
+    e1.display();
+
+    cout << "\nParameterized Employee:" << endl;
+    e2.display();
+
+    return 0;
+}
