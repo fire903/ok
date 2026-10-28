@@ -1,0 +1,26 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream fin("data.txt");
+
+    try {
+        if (!fin.is_open()) {
+            throw 1;
+        }
+
+        string line;
+
+        while (getline(fin, line)) {
+            cout << line << endl;
+        }
+
+        fin.close();
+    }
+    catch (int x) {
+        cout << "Error: Unable to read file";
+    }
+
+    return 0;
+}
