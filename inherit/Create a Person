@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+class Person {
+public:
+    string name;
+
+    virtual void display() {
+        cout << "Name: " << name << endl;
+    }
+};
+
+class Student : public Person {
+public:
+    int roll;
+    int marks;
+};
+
+class ReportCard : public Student {
+public:
+    void calculateGrade() {
+        cout << "Roll No: " << roll << endl;
+        cout << "Marks: " << marks << endl;
+
+        if (marks >= 90) {
+            cout << "Grade: A";
+        }
+        else if (marks >= 75) {
+            cout << "Grade: B";
+        }
+        else if (marks >= 50) {
+            cout << "Grade: C";
+        }
+        else {
+            cout << "Grade: Fail";
+        }
+    }
+
+    void display() override {
+        Person::display();
+        calculateGrade();
+    }
+};
+
+int main() {
+    ReportCard r;
+
+    cout << "Enter name: ";
+    cin >> r.name;
+
+    cout << "Enter roll number: ";
+    cin >> r.roll;
+
+    cout << "Enter marks: ";
+    cin >> r.marks;
+
+    Person *p = &r;
+    p->display();
+
+    return 0;
+}
