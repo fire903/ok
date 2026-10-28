@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+class Person {
+public:
+    string name;
+
+private:
+    int age;
+
+protected:
+    int id;
+
+public:
+    void accept() {
+        cout << "Enter name: ";
+        cin >> name;
+
+        cout << "Enter age: ";
+        cin >> age;
+
+        cout << "Enter ID: ";
+        cin >> id;
+    }
+
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "ID: " << id << endl;
+    }
+};
+
+class Student : public Person {
+public:
+    void show() {
+        cout << "Name: " << name << endl;
+        cout << "ID: " << id << endl;
+
+        // cout << age;  // Not allowed: age is private
+    }
+};
+
+int main() {
+    Student s;
+
+    s.accept();
+    s.display();
+    s.show();
+
+    cout << "Outside class: " << s.name << endl;
+
+    // cout << s.age;  // Not allowed
+    // cout << s.id;   // Not allowed
+
+    return 0;
+}
