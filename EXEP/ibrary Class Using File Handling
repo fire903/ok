@@ -1,0 +1,59 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Library {
+    int id;
+    string title;
+    string author;
+
+public:
+    void accept() {
+        cout << "Enter book ID, title and author: ";
+        cin >> id >> title >> author;
+
+        ofstream fout("library.txt");
+
+        try {
+            if (!fout.is_open()) {
+                throw 1;
+            }
+
+            fout << id << " " << title << " " << author;
+            fout.close();
+        }
+        catch (int x) {
+            cout << "Error: File cannot be opened";
+        }
+    }
+
+    void display() {
+        ifstream fin("library.txt");
+
+        try {
+            if (!fin.is_open()) {
+                throw 1;
+            }
+
+            fin >> id >> title >> author;
+
+            cout << "\nBook ID: " << id;
+            cout << "\nTitle: " << title;
+            cout << "\nAuthor: " << author;
+
+            fin.close();
+        }
+        catch (int x) {
+            cout << "Error: File cannot be opened";
+        }
+    }
+};
+
+int main() {
+    Library l;
+
+    l.accept();
+    l.display();
+
+    return 0;
+}
