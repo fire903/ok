@@ -1,0 +1,28 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    int id;
+    string name;
+    float salary;
+
+    ofstream fout("employee.txt");
+
+    cout << "Enter employee ID, name and salary: ";
+    cin >> id >> name >> salary;
+
+    fout << id << " " << name << " " << salary;
+    fout.close();
+
+    ifstream fin("employee.txt");
+
+    fin >> id >> name >> salary;
+
+    cout << "\nEmployee ID: " << id;
+    cout << "\nName: " << name;
+    cout << "\nSalary: " << salary;
+
+    fin.close();
+    return 0;
+}
