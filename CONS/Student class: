@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+class Student {
+    string name, division, dob, blood, address, phone;
+    int roll;
+
+public:
+    Student() {
+        name = "Unknown";
+        roll = 0;
+        division = "A";
+        dob = "01-01-2000";
+        blood = "O+";
+        address = "Pune";
+        phone = "0000000000";
+    }
+
+    Student(string n, int r, string d, string date,
+            string b, string a, string p) {
+        name = n;
+        roll = r;
+        division = d;
+        dob = date;
+        blood = b;
+        address = a;
+        phone = p;
+    }
+
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << roll << endl;
+        cout << "Division: " << division << endl;
+        cout << "DOB: " << dob << endl;
+        cout << "Blood Group: " << blood << endl;
+        cout << "Address: " << address << endl;
+        cout << "Phone: " << phone << endl;
+    }
+
+    ~Student() {
+        cout << "Student object destroyed" << endl;
+    }
+};
+
+int main() {
+    Student s("Priya", 12, "B", "10-05-2007",
+              "B+", "Pune", "9876543210");
+
+    s.display();
+
+    return 0;
+}
