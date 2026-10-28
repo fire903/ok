@@ -1,0 +1,74 @@
+
+#include <iostream>
+using namespace std;
+
+class Employee {
+public:
+    string name;
+    int id;
+
+    virtual void gross_sal() {
+        cout << "Employee salary" << endl;
+    }
+};
+
+class SalariedEmployee : public Employee {
+public:
+    float salary;
+
+    void gross_sal() {
+        cout << name << " Salary: " << salary << endl;
+    }
+};
+
+class HourlyEmployee : public Employee {
+public:
+    float hours, rate;
+
+    void gross_sal() {
+        cout << name << " Salary: " << hours * rate << endl;
+    }
+};
+
+class CommissionEmployee : public Employee {
+public:
+    float sales, commission;
+
+    void gross_sal() {
+        cout << name << " Salary: "
+             << sales * commission / 100 << endl;
+    }
+};
+
+int main() {
+    SalariedEmployee s;
+    HourlyEmployee h;
+    CommissionEmployee c;
+
+    s.name = "Amit";
+    s.id = 1;
+    s.salary = 30000;
+
+    h.name = "Riya";
+    h.id = 2;
+    h.hours = 100;
+    h.rate = 200;
+
+    c.name = "Raj";
+    c.id = 3;
+    c.sales = 50000;
+    c.commission = 10;
+
+    Employee *e;
+
+    e = &s;
+    e->gross_sal();
+
+    e = &h;
+    e->gross_sal();
+
+    e = &c;
+    e->gross_sal();
+
+    return 0;
+}
