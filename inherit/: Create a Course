@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+class Course {
+public:
+    string name;
+    int code;
+
+    virtual void calculateFees() {
+        cout << "Course details" << endl;
+    }
+};
+
+class OnlineCourse : public Course {
+public:
+    string platform;
+    string schedule;
+
+    void calculateFees() override {
+        cout << "Course: " << name << endl;
+        cout << "Code: " << code << endl;
+        cout << "Platform: " << platform << endl;
+        cout << "Schedule: " << schedule << endl;
+        cout << "Fees: 5000" << endl;
+    }
+};
+
+class InPersonCourse : public Course {
+public:
+    string location;
+    string schedule;
+
+    void calculateFees() override {
+        cout << "Course: " << name << endl;
+        cout << "Code: " << code << endl;
+        cout << "Location: " << location << endl;
+        cout << "Schedule: " << schedule << endl;
+        cout << "Fees: 10000" << endl;
+    }
+};
+
+int main() {
+    OnlineCourse o;
+    InPersonCourse i;
+
+    cout << "Enter online course name and code: ";
+    cin >> o.name >> o.code;
+
+    cout << "Enter platform and schedule: ";
+    cin >> o.platform >> o.schedule;
+
+    cout << "\nEnter in-person course name and code: ";
+    cin >> i.name >> i.code;
+
+    cout << "Enter location and schedule: ";
+    cin >> i.location >> i.schedule;
+
+    Course *p;
+
+    p = &o;
+    p->calculateFees();
+
+    p = &i;
+    p->calculateFees();
+
+    return 0;
+}
