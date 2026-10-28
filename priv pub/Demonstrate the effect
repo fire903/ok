@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    int a;
+
+protected:
+    int b;
+
+private:
+    int c;
+};
+
+class PublicDerived : public Base {
+public:
+    void show() {
+        a = 10;
+        b = 20;
+
+        cout << "Public inheritance: " << a << " " << b << endl;
+    }
+};
+
+class PrivateDerived : private Base {
+public:
+    void show() {
+        a = 30;
+        b = 40;
+
+        cout << "Private inheritance: " << a << " " << b << endl;
+    }
+};
+
+class ProtectedDerived : protected Base {
+public:
+    void show() {
+        a = 50;
+        b = 60;
+
+        cout << "Protected inheritance: " << a << " " << b << endl;
+    }
+};
+
+int main() {
+    PublicDerived p;
+    PrivateDerived q;
+    ProtectedDerived r;
+
+    p.show();
+    q.show();
+    r.show();
+
+    p.a = 100;  // Allowed
+
+    // q.a = 100;  // Not allowed
+    // r.a = 100;  // Not allowed
+
+    return 0;
+}
