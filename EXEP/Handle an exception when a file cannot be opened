@@ -1,0 +1,21 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream fin("missing.txt");
+
+    try {
+        if (!fin.is_open()) {
+            throw 1;
+        }
+
+        cout << "File opened successfully";
+        fin.close();
+    }
+    catch (int x) {
+        cout << "Error: File cannot be opened";
+    }
+
+    return 0;
+}
