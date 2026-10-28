@@ -1,0 +1,65 @@
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    string name;
+    int age;
+
+    virtual void makeSound() {
+        cout << "Animal sound" << endl;
+    }
+};
+
+class Mammal : public Animal {
+public:
+    void makeSound() {
+        cout << name << " says: Roar!" << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+class Bird : public Animal {
+public:
+    void makeSound() {
+        cout << name << " says: Chirp!" << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+class Reptile : public Animal {
+public:
+    void makeSound() {
+        cout << name << " says: Hiss!" << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+int main() {
+    Mammal m;
+    Bird b;
+    Reptile r;
+
+    m.name = "Lion";
+    m.age = 5;
+
+    b.name = "Parrot";
+    b.age = 2;
+
+    r.name = "Snake";
+    r.age = 3;
+
+    Animal *a;
+
+    a = &m;
+    a->makeSound();
+
+    a = &b;
+    a->makeSound();
+
+    a = &r;
+    a->makeSound();
+
+    return 0;
+}
