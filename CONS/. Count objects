@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+    static int created, destroyed;
+
+public:
+    Demo() {
+        created++;
+        cout << "Object created" << endl;
+    }
+
+    ~Demo() {
+        destroyed++;
+        cout << "Object destroyed" << endl;
+    }
+
+    static void display() {
+        cout << "Created: " << created << endl;
+        cout << "Destroyed: " << destroyed << endl;
+    }
+};
+
+int Demo::created = 0;
+int Demo::destroyed = 0;
+
+int main() {
+    Demo d1, d2, d3;
+
+    Demo::display();
+
+    return 0;
+}
