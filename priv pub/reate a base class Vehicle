@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+class Vehicle {
+protected:
+    string brand;
+    int speed;
+};
+
+class Car : public Vehicle {
+public:
+    void accept() {
+        cout << "Enter brand: ";
+        cin >> brand;
+
+        cout << "Enter speed: ";
+        cin >> speed;
+    }
+
+    void display() {
+        cout << "Brand: " << brand << endl;
+        cout << "Speed: " << speed << endl;
+    }
+};
+
+int main() {
+    Car c;
+
+    c.accept();
+    c.display();
+
+    return 0;
+}
