@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+class Vehicle {
+public:
+    string number;
+    string brand;
+
+    virtual void display() {
+        cout << "Vehicle Number: " << number << endl;
+        cout << "Brand: " << brand << endl;
+    }
+};
+
+class Car : public Vehicle {
+public:
+    int seats;
+
+    void display() override {
+        Vehicle::display();
+        cout << "Seats: " << seats << endl;
+    }
+};
+
+class Bike : public Vehicle {
+public:
+    int cc;
+
+    void display() override {
+        Vehicle::display();
+        cout << "Engine CC: " << cc << endl;
+    }
+};
+
+int main() {
+    Car c;
+    Bike b;
+
+    cout << "Enter car number and brand: ";
+    cin >> c.number >> c.brand;
+
+    cout << "Enter number of seats: ";
+    cin >> c.seats;
+
+    cout << "\nEnter bike number and brand: ";
+    cin >> b.number >> b.brand;
+
+    cout << "Enter bike CC: ";
+    cin >> b.cc;
+
+    Vehicle *p;
+
+    cout << "\nCar Details\n";
+    p = &c;
+    p->display();
+
+    cout << "\nBike Details\n";
+    p = &b;
+    p->display();
+
+    return 0;
+}
