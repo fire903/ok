@@ -1,0 +1,35 @@
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    void display(string name) {
+        cout << "Name: " << name << endl;
+    }
+
+    void display(string name, int roll) {
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << roll << endl;
+    }
+
+    void display(string name, int roll, float marks) {
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << roll << endl;
+        cout << "Marks: " << marks << endl;
+    }
+};
+
+int main() {
+    Student s;
+
+    s.display("Rahul");
+    cout << endl;
+
+    s.display("Rahul", 101);
+    cout << endl;
+
+    s.display("Rahul", 101, 85.5f);
+
+    return 0;
+}
