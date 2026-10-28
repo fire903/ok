@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+
+class Inventory {
+    int code, quantity;
+    string name;
+    float cost;
+
+public:
+    Inventory() {
+        code = 0;
+        quantity = 0;
+        name = "Unknown";
+        cost = 0;
+    }
+
+    Inventory(Inventory &i) {
+        code = i.code;
+        quantity = i.quantity;
+        name = i.name;
+        cost = i.cost;
+    }
+
+    void accept() {
+        cout << "Enter item code: ";
+        cin >> code;
+        cout << "Enter item name: ";
+        cin >> name;
+        cout << "Enter quantity: ";
+        cin >> quantity;
+        cout << "Enter cost: ";
+        cin >> cost;
+    }
+
+    void display() {
+        cout << "Code: " << code << endl;
+        cout << "Name: " << name << endl;
+        cout << "Quantity: " << quantity << endl;
+        cout << "Cost: " << cost << endl;
+    }
+
+    int getCode() {
+        return code;
+    }
+};
+
+int main() {
+    Inventory i1, i2;
+    int key;
+
+    i1.accept();
+    i2 = i1;
+
+    cout << "Enter code to search: ";
+    cin >> key;
+
+    if (i2.getCode() == key) {
+        cout << "Item found:" << endl;
+        i2.display();
+    } else {
+        cout << "Item not found" << endl;
+    }
+
+    return 0;
+}
