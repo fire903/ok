@@ -1,0 +1,64 @@
+
+#include <iostream>
+using namespace std;
+
+class BankAccount {
+public:
+    float balance;
+
+    virtual void withdraw(float amount) {
+        cout << "Withdrawal" << endl;
+    }
+};
+
+class SavingsAccount : public BankAccount {
+public:
+    void withdraw(float amount) {
+        try {
+            if (amount > balance) {
+                throw amount;
+            }
+
+            balance = balance - amount;
+            cout << "Savings Balance: " << balance << endl;
+        }
+        catch (float x) {
+            cout << "Error: Insufficient balance" << endl;
+        }
+    }
+};
+
+class CurrentAccount : public BankAccount {
+public:
+    void withdraw(float amount) {
+        try {
+            if (amount > balance) {
+                throw amount;
+            }
+
+            balance = balance - amount;
+            cout << "Current Balance: " << balance << endl;
+        }
+        catch (float x) {
+            cout << "Error: Insufficient balance" << endl;
+        }
+    }
+};
+
+int main() {
+    SavingsAccount s;
+    CurrentAccount c;
+
+    s.balance = 5000;
+    c.balance = 10000;
+
+    BankAccount *b;
+
+    b = &s;
+    b->withdraw(2000);
+
+    b = &c;
+    b->withdraw(12000);
+
+    return 0;
+}
